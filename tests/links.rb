@@ -1,22 +1,12 @@
 require "net/http"
 
-# monkey patch Hash so we can iterate on keys, move this later... when I find out how globals and modules work better
-class Hash
-  def hmap(&block)
-    Hash[se lf.map {|k, v| block.call(k,v) }]
-  end
-end
-
 class Links
   def initialize(html_links)
+    # puts html_links
     @likely_links = {}
+    @actual_links = {}
 
     def url_exist?(url_string)
-
-      # if url_string[-1] != '/'
-      #   url_string = url_string.concat "/"
-
-
       url = URI.parse(url_string)
       req = Net::HTTP.new(url.host, url.port)
       req.use_ssl = (url.scheme == 'https')
@@ -44,14 +34,26 @@ class Links
       end
     end
 
+    # get the link from the anchor tag
     html_links.css('a').map  do | link |
       search_for_link link['href']
     end
 
+    # puts @likely_links
+
+
     @likely_links.each do |k,v|
       #   k.to_sym, v
-      puts url_exist? k
+      if url_exist? k
+        @actual_links[k] = true
+      end
     end
+
+    # just for printing
+    # @actual_links.each do |k,v|
+    #   puts @actual_links[k]
+    # end
+
 
   end
 end

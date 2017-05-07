@@ -21,8 +21,12 @@ define_method('200') do
     f.puts res.body
   }
   doc = Nokogiri::HTML(open('.tmp/myfile.out'))
-  puts doc.class
-  puts doc.css("title")[0].text
+  puts "-------------------"
+  puts "STARTING WEB CRAWL"
+  puts "-------------------"
+  puts "Searching #{url} for stuffz.."
+  puts "Document is of class #{doc.class}"
+  puts "Page Title: #{doc.css('title')[0].text}"
   puts doc.css("h1")
   Links.new doc.css("a")
 end
