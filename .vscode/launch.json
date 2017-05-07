@@ -1,12 +1,13 @@
+// script so I can set break points in VSC in ruby code
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Debug Local Ruby File",
-            "type": "Ruby",
-            "request": "launch",
-            "cwd": "${workspaceRoot}",
-            "program": "${workspaceRoot}/newfile.rb"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Local Ruby File",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/newfile.rb"
+    }
+  ]
 }

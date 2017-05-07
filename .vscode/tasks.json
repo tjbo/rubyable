@@ -1,0 +1,25 @@
+{
+  "version": "0.1.0",
+  "command": "sh",
+  "args": [
+    "-c"
+  ],
+  "isShellCommand": false,
+  "showOutput": "never",
+  "suppressTaskName": true,
+  "tasks": [
+    // formats ruby code
+    {
+      "taskName": "ruby",
+      "isBuildCommand": true,
+      "args": ["rbeautify ${file}"]
+    },
+    // format html in ruby
+    {
+      "taskName": "ERB format",
+      "args": [
+        "htmlbeautifier ${file}"
+      ]
+    }
+  ]
+}

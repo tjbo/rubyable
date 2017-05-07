@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 source "https://rubygems.org"
 gem 'nokogiri'
+gem 'w3c_validators'
 
-# gem "rails"
