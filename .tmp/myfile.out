@@ -8,7 +8,7 @@
 
     <title>Bonzai Intranet - Intranet Platform for SharePoint and Office 365</title>
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="zR45wMVIjTmkRuVVjeOINa4VxuGnzHHcMeVvLBWR2AfJ11A4TuFeb7cw9RpbkF4sI7DBmgJwgmXceHBOJ89teA==" />
+<meta name="csrf-token" content="yfV3o7izobgCOsr3TWDsK0XRAN/KZZJNKZ7+o53yEnJ+N/rx8qW4T4A0ns7voAzzRgZf+tZduoolDkAux+Ph+A==" />
     <meta name="action-cable-url" content="/cable" />
     <link rel="stylesheet" media="all" href="/assets/application-3a3b661475f066f16551c00d9923315ba85c6eb39f84a3c2b422dd231652dac2.css" data-turbolinks-track="true" />
     <script src="/assets/application-f958b05a7a37aa259a5365f31ae8c019918c11c2c4bf9dfcdfbd8f571df13c2c.js" data-turbolinks-track="true"></script>

@@ -1,11 +1,11 @@
 require "net/http"
 
 class Links
-  def initialize(html_links)
-    # puts html_links
-    @likely_links = {}
-    @actual_links = {}
+  def initialize(links, uri)
+    @maybe_links = {}
+    @confirmed_links = {}
 
+    # checks the url to see if exists, by sending a request
     def url_exist?(url_string)
       url = URI.parse(url_string)
       req = Net::HTTP.new(url.host, url.port)
@@ -27,33 +27,28 @@ class Links
       false #false if can't find the server
     end
 
-    def search_for_link possible_link
-      if possible_link =~ /\Ahttps?/
+    # we need only absolute links
+    links.each do |k,v|
+      if k =~ /\Ahttps?/
         # set as hash to remove duplicates
-        @likely_links[possible_link] = true
+        @maybe_links[k] = true
+      else
+        # this can result in double backslash, probably need better utility methods, but for now...
+        if k[0] == "/"
+          k[0] = ""
+        end
+        @maybe_links[k.prepend(uri)] = true
       end
     end
 
-    # get the link from the anchor tag
-    html_links.css('a').map  do | link |
-      search_for_link link['href']
-    end
-
-    # puts @likely_links
-
-
-    @likely_links.each do |k,v|
-      #   k.to_sym, v
+    @maybe_links.each do |k,v|
       if url_exist? k
-        @actual_links[k] = true
+        @confirmed_links[k] = true
       end
     end
 
-    # just for printing
-    # @actual_links.each do |k,v|
-    #   puts @actual_links[k]
-    # end
-
-
+    def get_links
+      @confirmed_links
+    end
   end
 end
