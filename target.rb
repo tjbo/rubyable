@@ -1,13 +1,18 @@
+require 'uri'
+
 class Target
-  def initialize(uri, fetched)
-    #fetched means we have gotten the link
+  attr_reader :uri
+
+  def initialize(uri, fetched, filename, parentUri)
+    #fetched means we have downloaded and copied the file
     @uri = uri
     @fetched = fetched
-    @processing = false
+    @filename = filename
+    @parentUri = parentUri
   end
 
-  def start_processing
-    self.processing = true
+  def is_local
+    @uri.include? URI(@parentUri).host
   end
 
 end
